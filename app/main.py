@@ -5,7 +5,7 @@ class Person:
         self.name = name
         self.age = age
         if name in Person.people:
-            raise ValueError(f"Person with name '{name}' already exists.")
+            raise ValueError(f"Person with '{name}' already exists.")
         Person.people[self.name] = self
 
     def __repr__(self) -> str:
@@ -28,7 +28,7 @@ def create_person_list(data: list) -> list:
                 instance.wife = Person.people[wife_name]
             else:
                 print(
-                    f"Warning: {wife_name} not found in the people dictionary."
+                    f"Warning: {wife_name} not found in dictionary."
                 )
 
         if "husband" in person and person["husband"] is not None:
@@ -37,7 +37,7 @@ def create_person_list(data: list) -> list:
                 instance.husband = Person.people[husband_name]
             else:
                 print(
-                    f"Warning: {husband_name} not found in the people dictionary."
+                    f"Warning: {husband_name} not found in dictionary."
                 )
 
     return person_list
