@@ -35,13 +35,20 @@ def create_person_list(data: list) -> list:
         if "wife" in person and person["wife"]:
             wife_name = person["wife"]
             instance.wife = Person.people.get(wife_name)
+
             if instance.wife is None:
-                print(f"Warning: Wife '{wife_name}' not found for '{instance.name}'.")
+                print(
+                    f"Warning: Wife '{wife_name}' not found for '{instance.name}'."
+                )
 
         if "husband" in person and person["husband"]:
             husband_name = person["husband"]
             instance.husband = Person.people.get(husband_name)
+
             if instance.husband is None:
-                print(f"Warning: Husband '{husband_name}' not found for '{instance.name}'.")
+                print(
+                    f"Warning: Husband '{husband_name}' not found for "
+                    f"'{instance.name}'."
+                )
 
     return person_list
