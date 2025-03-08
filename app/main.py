@@ -1,5 +1,5 @@
 class Person:
-    people = {}  # Stores all Person instances by name
+    people = {}
 
     def __init__(self, name: str, age: int) -> None:
         if name in Person.people:
@@ -8,7 +8,7 @@ class Person:
         self.age = age
         self.wife = None
         self.husband = None
-        Person.people[self.name] = self  # Store the instance globally
+        Person.people[self.name] = self  # Store instance in the dictionary
 
     def __repr__(self) -> str:
         return f"Person(name='{self.name}', age={self.age})"
@@ -17,7 +17,7 @@ class Person:
 def create_person_list(data: list) -> list:
     person_list = []
 
-    # First pass: Create all Person objects (handling duplicate names)
+    # First pass: Create Person instances with unique names
     for person in data:
         if person["name"] in Person.people:
             print(f"Warning: Duplicate name '{person['name']}' found. Skipping entry.")
@@ -26,9 +26,9 @@ def create_person_list(data: list) -> list:
             person_obj = Person(person["name"], person["age"])
             person_list.append(person_obj)
         except ValueError as e:
-            print(e)  # Error already handled in __init__, but log it just in case
+            print(e)
 
-    # Second pass: Assign relationships
+    # Second pass: Assign relationships (handling missing references)
     for person in data:
         instance = Person.people.get(person["name"])
         if not instance:
