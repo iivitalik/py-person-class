@@ -9,7 +9,9 @@ class Person:
 
     def __init__(self, name: str, age: int) -> None:
         if name in Person.people:
-            raise ValueError(f"Person with name '{name}' already exists.")
+            raise ValueError(
+                f"Person with name '{name}' already exists."
+            )
         self.name = name
         self.age = age
         self.wife = None
@@ -30,7 +32,9 @@ def create_person_list(data: list) -> list:
     for person in data:
         name = person["name"]
         if name in seen_names:
-            logging.error(f"Duplicate name detected: '{name}'. Skipping entry.")
+            logging.error(
+                f"Duplicate name detected: '{name}'. Skipping entry."
+            )
             continue
         seen_names.add(name)
 
@@ -53,12 +57,16 @@ def create_person_list(data: list) -> list:
             wife_name = person["wife"]
             instance.wife = Person.people.get(wife_name)
             if instance.wife is None:
-                logging.warning(f"Wife '{wife_name}' not found for '{instance.name}'.")
+                logging.warning(
+                    f"Wife '{wife_name}' not found for '{instance.name}'."
+                )
 
         if "husband" in person and person["husband"]:
             husband_name = person["husband"]
             instance.husband = Person.people.get(husband_name)
             if instance.husband is None:
-                logging.warning(f"Husband '{husband_name}' not found for '{instance.name}'.")
+                logging.warning(
+                    f"Husband '{husband_name}' not found for '{instance.name}'."
+                )
 
     return person_list
