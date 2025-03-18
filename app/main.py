@@ -16,7 +16,7 @@ class Person:
         self.age = age
         self.wife = None
         self.husband = None
-        Person.people[name] = self  # Store the instance globally
+        Person.people[name] = self
 
     def __repr__(self) -> str:
         return f"Person(name='{self.name}', age={self.age})"
@@ -27,7 +27,6 @@ def create_person_list(data: list) -> list:
     Person.people.clear()
     person_list = []
 
-    # Detect duplicate names before instantiation
     seen_names = set()
     for person in data:
         name = person["name"]
@@ -66,7 +65,7 @@ def create_person_list(data: list) -> list:
             instance.husband = Person.people.get(husband_name)
             if instance.husband is None:
                 logging.warning(
-                    f"Husband '{husband_name}' not found for '{instance.name}'."
+                    f"Husband '{husband_name}' not found '{instance.name}'."
                 )
 
     return person_list
