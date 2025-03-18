@@ -65,7 +65,7 @@ def create_person_list(data: list) -> list:
             instance.husband = Person.people.get(husband_name)
             if instance.husband is None:
                 logging.warning(
-                    f"Husband '{husband_name}' not found '{instance.name}'."
+                    f"Husband '{husband_name}' not found for '{instance.name}'."
                 )
 
     return person_list
